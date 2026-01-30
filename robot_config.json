@@ -1,0 +1,21 @@
+{
+  "robot_settings": {
+    "default_name": "Rux",
+    "default_mood": "happy",
+    "enable_learning": true,
+    "save_conversations": true
+  },
+  "personality": {
+    "friendly": true,
+    "helpful": true,
+    "curious": true
+  },
+  "features": {
+    "greeting": true,
+    "farewell": true,
+    "learning": true,
+    "conversation_history": true,
+    "mood_system": true,
+    "knowledge_persistence": true
+  }
+}
