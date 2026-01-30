@@ -25,7 +25,7 @@ def test_greeting():
     greeting = robot.greet()
     assert isinstance(greeting, str)
     assert len(greeting) > 0
-    assert "Rux" in greeting or "Hello" in greeting or "Hi" in greeting
+    assert robot.name in greeting or "Hello" in greeting or "Hi" in greeting
     print("✓ test_greeting passed")
 
 
@@ -117,7 +117,6 @@ def test_save_load_knowledge():
     assert "unique response" in robot2.knowledge_base["unique_test"]
     
     # Cleanup
-    import os
     if os.path.exists(filename):
         os.remove(filename)
     

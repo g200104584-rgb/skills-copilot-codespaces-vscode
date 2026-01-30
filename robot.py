@@ -153,9 +153,12 @@ class Robot:
     
     def save_knowledge(self, filename: str = "robot_knowledge.json"):
         """Save knowledge base to a file"""
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(self.knowledge_base, f, indent=2, ensure_ascii=False)
-        return f"Knowledge saved to {filename}"
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(self.knowledge_base, f, indent=2, ensure_ascii=False)
+            return f"Knowledge saved to {filename}"
+        except (IOError, PermissionError) as e:
+            return f"Error saving knowledge: {e}"
     
     def load_knowledge(self, filename: str = "robot_knowledge.json"):
         """Load knowledge base from a file"""
@@ -165,6 +168,8 @@ class Robot:
             return f"Knowledge loaded from {filename}"
         except FileNotFoundError:
             return f"File {filename} not found. Using default knowledge."
+        except (IOError, PermissionError, json.JSONDecodeError) as e:
+            return f"Error loading knowledge: {e}"
     
     def set_mood(self, mood: str):
         """Set the robot's mood"""

@@ -148,6 +148,8 @@ def demo_persistence():
     print("DEMO 6: Knowledge Persistence")
     print("="*60)
     
+    filename = "demo_knowledge.json"
+    
     # Create first robot and teach it
     print("\n--- Creating and teaching Robot 1 ---")
     robot1 = Robot(name="Rux")
@@ -159,14 +161,14 @@ def demo_persistence():
     
     # Save knowledge
     print("\n--- Saving knowledge to file ---")
-    result = robot1.save_knowledge("demo_knowledge.json")
+    result = robot1.save_knowledge(filename)
     print(f"Robot 1: {result}")
     time.sleep(1)
     
     # Create second robot and load knowledge
     print("\n--- Creating Robot 2 and loading knowledge ---")
     robot2 = Robot(name="Rux2")
-    result = robot2.load_knowledge("demo_knowledge.json")
+    result = robot2.load_knowledge(filename)
     print(f"Robot 2: {result}")
     time.sleep(1)
     
@@ -174,6 +176,12 @@ def demo_persistence():
     print("\n--- Robot 2 now has Robot 1's knowledge! ---")
     stats = robot2.get_stats()
     print(f"Total responses in knowledge base: {stats['total_responses']}")
+    
+    # Cleanup
+    import os
+    if os.path.exists(filename):
+        os.remove(filename)
+        print(f"\n--- Cleaned up {filename} ---")
     
 
 def demo_advanced_usage():
