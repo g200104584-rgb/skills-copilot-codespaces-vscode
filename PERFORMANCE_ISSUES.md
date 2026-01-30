@@ -59,7 +59,7 @@ This document outlines the performance issues found in the codebase and recommen
 - **Problem**: Reads entire file instead of processing line by line
 - **Impact**: High memory usage, fails on large files
 
-### 7. **Exponential Recursion** - `fibonacci_slow()`
+### 7. **Repeated Calculations** - `fibonacci_slow()`
 - **Problem**: Recalculates same values multiple times without memoization
 - **Impact**: Exponential time complexity O(2^n)
 

@@ -44,7 +44,6 @@ function findItems(targetIds, allItems) {
 
 // IMPROVED: Use async file operations
 async function processLargeFile(filename) {
-    const fs = require('fs').promises;
     const readline = require('readline');
     const fileStream = require('fs').createReadStream(filename);
     
@@ -96,6 +95,9 @@ function debounce(func, wait) {
 function memoize(fn) {
     const cache = new Map();
     return function(...args) {
+        // Note: Using JSON.stringify for cache keys has limitations
+        // (doesn't handle functions, symbols, undefined, circular refs)
+        // For production, consider a more robust key generation
         const key = JSON.stringify(args);
         if (cache.has(key)) {
             return cache.get(key);

@@ -20,7 +20,10 @@ function findDuplicates(arr) {
 function buildLargeString(items) {
     let result = '';
     for (let i = 0; i < items.length; i++) {
-        result += items[i] + ',';
+        result += items[i];
+        if (i < items.length - 1) {
+            result += ',';
+        }
     }
     return result;
 }
@@ -67,7 +70,7 @@ function processLargeFile(filename) {
     return sum;
 }
 
-// ISSUE 6: Memory leak - creating closures in loops
+// ISSUE 6: Variable scoping issue with var in loops
 function createHandlers(count) {
     const handlers = [];
     for (var i = 0; i < count; i++) {

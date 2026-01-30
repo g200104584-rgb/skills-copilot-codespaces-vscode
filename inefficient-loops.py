@@ -29,8 +29,10 @@ def calculate_sum(numbers):
 # ISSUE 4: Inefficient string building
 def create_report(data):
     report = ""
-    for item in data:
-        report = report + f"Item: {item['name']}, Value: {item['value']}\n"
+    for i, item in enumerate(data):
+        report = report + f"Item: {item['name']}, Value: {item['value']}"
+        if i < len(data) - 1:
+            report += "\n"
     return report
 
 # ISSUE 5: Unnecessary nested loops
@@ -53,9 +55,7 @@ def count_lines_with_pattern(filename, pattern):
             count += 1
     return count
 
-# ISSUE 7: Using global variables and repeated calculations
-cache = {}
-
+# ISSUE 7: Repeated calculations without memoization
 def fibonacci_slow(n):
     if n <= 1:
         return n

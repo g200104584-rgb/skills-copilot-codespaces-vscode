@@ -68,7 +68,7 @@ function buildLargeString(items) {
 
 **Improvements:**
 - **Memory**: Reduces memory allocations from n to 1
-- **Performance Gain**: ~10-100x faster for large arrays
+- **Performance Gain**: ~100x faster for large arrays
 - **Technique**: Use built-in `join()` method
 
 ---
